@@ -32,3 +32,6 @@ cd 101-projeto/
 npm install @react-navigation/native-stack
 
 expo start
+
+
+![alt text](Isolated.png "Title")
