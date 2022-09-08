@@ -32,3 +32,6 @@ cd 101-projeto/
 npm install @react-navigation/native-stack
 
 expo start
+
+
+![alt text](https://raw.githubusercontent.com/carlos-teles/projetosMobile2022/main/extras/01-101projeto.jpeg "Home")
