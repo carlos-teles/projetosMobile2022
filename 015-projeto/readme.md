@@ -45,3 +45,6 @@ https://thewebdev.info/2022/02/20/how-to-add-email-validation-with-react-native/
 
 
 https://www.faqcode4u.com/faq/374131/email-validation-react-native-returning-the-result-as-invalid-for-all-the-e
+
+
+https://aboutreact.com/react-native-check-textinput-is-empty-or-not/
