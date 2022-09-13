@@ -48,3 +48,6 @@ https://www.faqcode4u.com/faq/374131/email-validation-react-native-returning-the
 
 
 https://aboutreact.com/react-native-check-textinput-is-empty-or-not/
+
+
+https://www.npmjs.com/package/react-native-input-validator
