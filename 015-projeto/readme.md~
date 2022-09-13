@@ -1,0 +1,31 @@
+ 2017  ls -ltra
+ 2018  cd ..
+ 2019  ls -ltra
+ 2020  expo init 015-projeto/
+ 2021  cd 015-projeto/
+ 2022  code .
+ 2023  expo start
+ 2024  npm list
+ 2025  expo start
+ 2026  cd ..
+ 2027  ls -ltra
+ 2028  rm -rf 015-projeto/
+ 2029  expo init 015-projeto/
+ 2030  cd -
+ 2031  expo start
+ 2032  npm install react-dom react-native-web --legacy-peer-deps
+ 2033  expo start
+ 2034  npm i react-native-paper
+ 2035  npm install react-native-paper
+ 2036  npm install react-native-paper --legacy-peer-deps
+ 2037  expo start
+ 2038  cd -
+ 2039  history 
+
+
+
+Formulario
+https://www.mywebtuts.com/blog/react-native-fetch-https-post-request-example
+
+Validar e-mail
+https://thewebdev.info/2022/02/20/how-to-add-email-validation-with-react-native/
