@@ -25,12 +25,13 @@ export default function App() {
       setmsgErrText("Campo preenchido incorretamente.");
       return false;
     }
+}    
     const validateMail = () => {
       const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
       //console.log(text, reg.test(text));
       return !reg.test(email);
     };  
-  }
+  
 
   return (
     <View style={styles.container}>
