@@ -49,6 +49,14 @@ export default function App() {
     }
   };  
 
+  const validatePassword = () => {
+    const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    //console.log(reg.test(password));
+    //console.log(!reg.test(email));
+    return !reg.test(password);
+
+  };
+
   const validateMail = () => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     //console.log(reg.test(email));
@@ -85,6 +93,9 @@ export default function App() {
       <Text style={styles.labelText}>Senha:</Text>
       <TextInput style={styles.inputText} label="Senha" secureTextEntry={secureTextEntry} placeholder="Informe a senha" onChangeText={password => setPasswordText(password)} right={ <TextInput.Icon  name="eye" onPress={() => {setSecureTextEntry(!secureTextEntry); return false;}}  /> } 
       />
+      <HelperText type="error" visible={validatePassword()}>
+        O campo senha está inválido!
+      </HelperText>      
       {/* fim campo senha */}
       {/* inicio campo botao */}
       <Button title="Submit" style={styles.buttonstyle} disabled={btnEnable} color="#6200EE" />
