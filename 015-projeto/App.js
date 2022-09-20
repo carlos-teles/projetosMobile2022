@@ -26,11 +26,32 @@ export default function App() {
       return false;
     }
 }    
-    const validateMail = () => {
-      const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-      //console.log(text, reg.test(text));
-      return !reg.test(email);
-    };  
+  
+const validateName = () => {
+    //console.log(firstName.length);
+    //firstName = firstName.trim();
+    var cleanStr=firstName.trim();
+    //console.log(cleanStr);
+    if (cleanStr.length >= 3) {
+      return false;
+    }
+};
+  
+const validatelastName = () => {
+    //console.log(firstName.length);
+    //firstName = firstName.trim();
+    var cleanStr=lastName.trim();
+    //console.log(cleanStr);
+    if (cleanStr.length >= 3) {
+      return false;
+    }
+};  
+  
+const validateMail = () => {
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    //console.log(text, reg.test(text));
+    return !reg.test(email);
+};  
   
 
   return (
@@ -38,10 +59,16 @@ export default function App() {
       {/* inicio campo nome */}
       <Text style={styles.labelText}>Nome:</Text>
       <TextInput style={styles.inputText} placeholder="Informe o seu Nome" onChangeText={firstName => setFirstNameText(firstName)} />
+      <HelperText type="error" visible={validateName()}>
+        O campo Nome está inválido!
+      </HelperText>    
       {/* fim campo nome */}
       {/* inicio campo sobrenome */}
       <Text style={styles.labelText}>Sobrenome:</Text>
       <TextInput style={styles.inputText} placeholder="Informe o sobrenome" onChangeText={lastName => setLastNameText(lastName)} defaultValue={lastName} />
+      <HelperText type="error" visible={validatelastName()}>
+        O campo Sobrenome está inválido!
+      </HelperText>            
       {/* fim campo sobrenome */}
       {/* inicio campo email */}
       <Text style={styles.labelText}>Email:</Text>
