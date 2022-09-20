@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from "react";
 import { Text, View, StyleSheet, Button, Modal, Pressable, Icon } from 'react-native';
-import { Provider, Appbar, Avatar, TextInput } from 'react-native-paper';
+import { Provider, Appbar, Avatar, TextInput, HelperText } from 'react-native-paper';
 
 export default function App() {
   const [firstName, setFirstNameText] = useState('');
@@ -25,9 +25,10 @@ export default function App() {
       setmsgErrText("Campo preenchido incorretamente.");
       return false;
     }
-}    
-  
-const validateName = () => {
+ 
+  }
+
+  const validateName = () => {
     //console.log(firstName.length);
     //firstName = firstName.trim();
     var cleanStr=firstName.trim();
@@ -35,9 +36,9 @@ const validateName = () => {
     if (cleanStr.length >= 3) {
       return false;
     }
-};
-  
-const validatelastName = () => {
+  };
+
+  const validatelastName = () => {
     //console.log(firstName.length);
     //firstName = firstName.trim();
     var cleanStr=lastName.trim();
@@ -45,14 +46,13 @@ const validatelastName = () => {
     if (cleanStr.length >= 3) {
       return false;
     }
-};  
-  
-const validateMail = () => {
+  };  
+
+  const validateMail = () => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    //console.log(text, reg.test(text));
+    //console.log(reg.test(email));
     return !reg.test(email);
-};  
-  
+  }; 
 
   return (
     <View style={styles.container}>
@@ -61,7 +61,7 @@ const validateMail = () => {
       <TextInput style={styles.inputText} placeholder="Informe o seu Nome" onChangeText={firstName => setFirstNameText(firstName)} />
       <HelperText type="error" visible={validateName()}>
         O campo Nome está inválido!
-      </HelperText>    
+      </HelperText>      
       {/* fim campo nome */}
       {/* inicio campo sobrenome */}
       <Text style={styles.labelText}>Sobrenome:</Text>
@@ -73,6 +73,11 @@ const validateMail = () => {
       {/* inicio campo email */}
       <Text style={styles.labelText}>Email:</Text>
       <TextInput style={styles.inputText} placeholder="Informe o e-mail" onChangeText={email => setEmailText(email)} defaultValue={email} />
+
+      <HelperText type="error" visible={validateMail()}>
+        O campo e-mail está inválido!
+      </HelperText>
+
       {/* fim campo email */}
       {/* inicio campo senha */}
       <Text style={styles.labelText}>Senha:</Text>
@@ -80,7 +85,7 @@ const validateMail = () => {
       />
       {/* fim campo senha */}
       {/* inicio campo botao */}
-      <Button title="Submit" onPress={() => validateAll()} style={styles.buttonstyle} color="#6200EE" />
+      <Button title="Submit" style={styles.buttonstyle} color="#6200EE" />
 
       <Text>{msgErr}</Text>
     </View>
