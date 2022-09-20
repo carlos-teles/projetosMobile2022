@@ -10,6 +10,7 @@ export default function App() {
   const [password, setPasswordText] = useState('');
   const [msgErr, setmsgErrText] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true); 
+  const [btnEnable, setbtnEnable] = useState(true); 
 
   const validateAll = () => {
     console.log("Validando form");
@@ -51,6 +52,7 @@ export default function App() {
   const validateMail = () => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     //console.log(reg.test(email));
+    //console.log(!reg.test(email));
     return !reg.test(email);
   }; 
 
@@ -85,7 +87,7 @@ export default function App() {
       />
       {/* fim campo senha */}
       {/* inicio campo botao */}
-      <Button title="Submit" style={styles.buttonstyle} disabled={true} color="#6200EE" />
+      <Button title="Submit" style={styles.buttonstyle} disabled={btnEnable} color="#6200EE" />
 
       <Text>{msgErr}</Text>
     </View>
