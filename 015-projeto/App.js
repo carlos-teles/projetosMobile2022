@@ -85,7 +85,7 @@ export default function App() {
       />
       {/* fim campo senha */}
       {/* inicio campo botao */}
-      <Button title="Submit" style={styles.buttonstyle} color="#6200EE" />
+      <Button title="Submit" style={styles.buttonstyle} disabled={true} color="#6200EE" />
 
       <Text>{msgErr}</Text>
     </View>
