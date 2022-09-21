@@ -11,13 +11,24 @@ export default function App() {
   const [msgErr, setmsgErrText] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true); 
   const [btnEnable, setbtnEnable] = useState(true); 
-
+  const [ctrlForm, setctrlForm] = useState(0); 
+  
   const validateAll = () => {
-    console.log("Validando form");
-    validateStrSize(firstName);
-    validateStrSize(lastName);
-    validateStrSize(email);
-    validateStrSize(password);
+    //console.log("Validando form");
+    //console.log(validateName());
+    //console.log(validatelastName());
+    //console.log(validatePassword());
+    //console.log(validateMail());
+    if( validateName() == false && validatelastName() == false && validatePassword() == false && validateMail() == false )
+    {
+      setmsgErrText("");
+    }
+    else
+    {
+      setmsgErrText("Há algum campo preenchido incorretamente. Verifique!");
+    }
+
+
   }
 
   const validateStrSize = (text) => {
@@ -48,6 +59,13 @@ export default function App() {
       return false;
     }
   };  
+  /*
+  https://dev.to/petroskoulianos/3-password-regex-for-your-next-project-53fn
+  // more secure regex password must be :
+  // more than 8 chars  
+   // at least one number
+   // at least one special character
+  */
 
   const validatePassword = () => {
     const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
@@ -98,9 +116,9 @@ export default function App() {
       </HelperText>      
       {/* fim campo senha */}
       {/* inicio campo botao */}
-      <Button title="Submit" style={styles.buttonstyle} disabled={btnEnable} color="#6200EE" />
+      <Button title="Enviar os dados" style={styles.buttonstyle} onPress={() => {validateAll();}} color="#6200EE" />
 
-      <Text>{msgErr}</Text>
+      <Text style={styles.errorColor} >{msgErr}</Text>
     </View>
   );
 }
@@ -112,7 +130,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  errorColor: {
+    backgroundColor: 'red',
+  },
   inputText: {
     height: 45,
     marginBottom: 15,
