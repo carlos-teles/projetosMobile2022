@@ -125,17 +125,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 0.8,
   },
   errorColor: {
     backgroundColor: 'red',
   },
   inputText: {
-    height: 45,
-    marginBottom: 15,
+    width: 200, height: 40, backgroundColor: 'powderblue'
   },
   buttonstyle: {
     marginTop: 10,
