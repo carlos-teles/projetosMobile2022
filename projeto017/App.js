@@ -11,7 +11,10 @@ export default function App() {
   const [carregando, setCarregando] = useState(false);
 
   const validateAll = () => {
-    console.log("Teste");
+    console.log(busca);
+    //setBusca(busca+"xxxx")
+    setBusca(parseInt(busca)+2)
+    //busca => setBusca(busca);
   }
 
   return (
@@ -20,6 +23,7 @@ export default function App() {
       <Text style={styles.labelText}>Busca:</Text>
       <TextInput style={styles.inputText} placeholder="Informe a busca" onChangeText={busca => setBusca(busca)} />{"\n"}
       <Button title="Enviar os dados" style={styles.buttonstyle} onPress={() => {validateAll();}} color="#6200EE" />
+      <Text style={styles.labelText}>{busca}</Text>
       <StatusBar style="auto" />
     </View>
   );
