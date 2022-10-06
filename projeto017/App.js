@@ -12,11 +12,52 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const validateAll = () => {
-    console.log(busca);
-    //setBusca(busca+"xxxx")
-    setBusca(parseInt(busca)+2);
+    setCarregando(true);
+    //console.log(busca);
+    setBusca(busca);
+    setTimeout(() => {
+      fazBusca();      
+    }, 5000);    
+    //setBusca(parseInt(busca)+2);
     //busca => setBusca(busca);
   }
+
+  const refreshScreen = () =>
+  {
+    setErrorMessage(null);
+    setCarregando(false);
+    setApresentaTxt('');
+    setBusca('');
+  }
+
+  const fetchData = async () => {
+    try{
+          const resp = await fetch("https://api.sampleapis.com/coffee/"+busca);
+          const data = await resp.json();
+          //setData(data);
+          setApresentaTxt("Sua busca é:"+busca+data);
+          //setVisible(false);
+          setCarregando(false);
+        } catch (err){
+          //Error
+          setErrorMessage(err);
+        }
+
+  };    
+
+  const fazBusca = () => {
+    fetchData();
+
+
+    //Api OK
+    //setCarregando(false);
+    //setApresentaTxt("Sua busca é:"+busca);
+
+    //Error
+    //setErrorMessage("Busca nao implementada");
+    
+  }
+
 
     // Inicio - Busca ou resultado da busca
     if( carregando == false ){
@@ -28,7 +69,7 @@ export default function App() {
             <Text style={styles.labelText}>Busca:</Text>
             <TextInput style={styles.inputText} placeholder="Informe a busca" onChangeText={busca => setBusca(busca)} />{"\n"}
             <Button title="Enviar os dados" style={styles.buttonstyle} onPress={() => {validateAll();}} color="#6200EE" />
-            <Text style={styles.labelText}>{busca}</Text>
+            
             <StatusBar style="auto" />
           </View>
         );
@@ -39,6 +80,7 @@ export default function App() {
         return (
           <View style={styles.container}>
             <Text>{apresentaTxt}</Text>
+            <Button title="Voltar" style={styles.buttonstyle} onPress={() => {refreshScreen();}} color="#6200EE" />
             <StatusBar style="auto" />
           </View>
         );        
@@ -48,15 +90,15 @@ export default function App() {
     } else {
       if(errorMessage){
         return (
-          <View style={styles.container}>
-            <Text>{errorMessage}</Text>B
+          <View style={styles.errorStyle}>
+            <Text>{errorMessage}</Text>
             <StatusBar style="auto" />
           </View>
         );
       } else {
           return (
             <View style={styles.container}>
-              <ActivityIndicator size="large" color={styles.PRIMARY_COLOR} />A
+              <ActivityIndicator size="large" color={styles.PRIMARY_COLOR} />            
               <StatusBar style="auto" />
             </View>
           );
@@ -74,6 +116,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  errorStyle: {
+    backgroundColor: 'red',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',    
   },
   buttonstyle: {
     marginTop: 10,
