@@ -2,6 +2,11 @@ Query external JSON
 
 Retrive and show results
 
+-> https://github.com/jermbo/SampleAPIs
+
+-> https://api.sampleapis.com/
+
+
 
 https://i-m-d-b.herokuapp.com/docs/#/default/post_
 
