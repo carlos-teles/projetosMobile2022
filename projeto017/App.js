@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from "react";
-import { StyleSheet, Text, View, Button, ActivityIndicator, FlatList } from 'react-native';
-import { Provider, Appbar, Avatar, TextInput, HelperText } from 'react-native-paper';
+import { StyleSheet, Text, View, Button, ActivityIndicator, FlatList, Image  } from 'react-native';
+import { Chip, Provider, Appbar, Avatar, TextInput, HelperText } from 'react-native-paper';
 //
 //https://api.sampleapis.com/coffee/iced
 //https://api.sampleapis.com/coffee/hot
@@ -82,13 +82,14 @@ export default function App() {
         return (
           <View style={styles.container}>
             <Text>{apresentaTxt}</Text>
-
             {dadosJson && ( <FlatList
-                  data={dadosJson}
-                  renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
-              />
-            )}
-
+                  data={dadosJson} renderItem={({item}) => 
+                  <View style={{flexDirection: "row", padding:3}}>
+                  <Image style={styles.tinyLogo} source={{uri:item.image}} />
+                  <Text>{item.title}</Text>
+                </View>                  
+                  
+                  } /> )}
             <Button title="Voltar" style={styles.buttonstyle} onPress={() => {refreshScreen();}} color="#6200EE" />
             <StatusBar style="auto" />
           </View>
@@ -143,6 +144,15 @@ const styles = StyleSheet.create({
     PRIMARY_COLOR: '#ff304f',
     SECONDARY_COLOR: '#002651',
     BORDER_COLOR: '#dbdbdb',
-  }
-  
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+    margin: 4,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },  
 });
