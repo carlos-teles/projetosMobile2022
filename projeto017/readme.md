@@ -18,6 +18,8 @@ https://publicapis.dev/search?q=imdb
 
 https://github.com/public-apis/public-apis#music
 
+https://dfilitto.com.br/desenvolvimento/desenvolvimento-mobile/react-native/react-native-como-utilizar-o-list-view/
+
 
 04/10/2022 - Verificar
 https://medium.com/@kelleyannerose/react-native-activityindicator-for-a-quick-easy-loading-animation-593c06c044dc
