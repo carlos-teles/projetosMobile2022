@@ -6,7 +6,7 @@ Retrive and show results
 
 -> https://api.sampleapis.com/
 
-
+??? -> https://medium.com/@nutanbhogendrasharma/step-by-step-consume-json-data-in-react-native-mobile-app-b86d837901da
 
 https://i-m-d-b.herokuapp.com/docs/#/default/post_
 
