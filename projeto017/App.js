@@ -2,8 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from "react";
 import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native';
 import { Provider, Appbar, Avatar, TextInput, HelperText } from 'react-native-paper';
-
-
+//
+//https://api.sampleapis.com/coffee/iced
+//https://api.sampleapis.com/coffee/hot
+//
 export default function App() {
   const [busca, setBusca] = useState('');
   const [botao, setBotao] = useState(true);
@@ -40,9 +42,10 @@ export default function App() {
           setCarregando(false);
         } catch (err){
           //Error
-          setErrorMessage(err);
+          //console.log("YYYY"+err);
+          setErrorMessage("ERRO! Api retornou dados inválidos.");
         }
-
+        
   };    
 
   const fazBusca = () => {
@@ -92,6 +95,7 @@ export default function App() {
         return (
           <View style={styles.errorStyle}>
             <Text>{errorMessage}</Text>
+            <Button title="Voltar" style={styles.buttonstyle} onPress={() => {refreshScreen();}} color="#6200EE" />            
             <StatusBar style="auto" />
           </View>
         );
