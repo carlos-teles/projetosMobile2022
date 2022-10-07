@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from "react";
-import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Button, ActivityIndicator, FlatList } from 'react-native';
 import { Provider, Appbar, Avatar, TextInput, HelperText } from 'react-native-paper';
 //
 //https://api.sampleapis.com/coffee/iced
@@ -12,6 +12,8 @@ export default function App() {
   const [apresentaTxt, setApresentaTxt] = useState('');
   const [carregando, setCarregando] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [dadosJson, setdadosJson] = useState(null);
+
 
   const validateAll = () => {
     setCarregando(true);
@@ -36,9 +38,8 @@ export default function App() {
     try{
           const resp = await fetch("https://api.sampleapis.com/coffee/"+busca);
           const data = await resp.json();
-          //setData(data);
-          setApresentaTxt("Sua busca é:"+busca+data);
-          //setVisible(false);
+          setdadosJson(data);
+          setApresentaTxt("Sua busca é: "+busca);
           setCarregando(false);
         } catch (err){
           //Error
@@ -50,16 +51,14 @@ export default function App() {
 
   const fazBusca = () => {
     fetchData();
-
-
     //Api OK
     //setCarregando(false);
     //setApresentaTxt("Sua busca é:"+busca);
 
     //Error
-    //setErrorMessage("Busca nao implementada");
-    
+    //setErrorMessage("Busca nao implementada"); 
   }
+
 
 
     // Inicio - Busca ou resultado da busca
@@ -83,6 +82,13 @@ export default function App() {
         return (
           <View style={styles.container}>
             <Text>{apresentaTxt}</Text>
+
+            {dadosJson && ( <FlatList
+                  data={dadosJson}
+                  renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
+              />
+            )}
+
             <Button title="Voltar" style={styles.buttonstyle} onPress={() => {refreshScreen();}} color="#6200EE" />
             <StatusBar style="auto" />
           </View>
