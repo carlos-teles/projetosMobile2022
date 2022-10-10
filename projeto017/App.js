@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from "react";
 import { StyleSheet, Text, View, Button, ActivityIndicator, FlatList, Image  } from 'react-native';
 import { Chip, Provider, Appbar, Avatar, TextInput, HelperText } from 'react-native-paper';
+import SelectPicker from './components/SelectPicker'
 //
 //https://api.sampleapis.com/coffee/iced
 //https://api.sampleapis.com/coffee/hot
@@ -13,17 +14,21 @@ export default function App() {
   const [carregando, setCarregando] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [dadosJson, setdadosJson] = useState(null);
-
+  const [valorCafe , setvalorCafe] = useState('')
 
   const validateAll = () => {
+
+    var busca = valorCafe;
     setCarregando(true);
     //console.log(busca);
-    setBusca(busca);
+    //setBusca(busca);
+    setBusca(valorCafe);
+    //console.log(valorCafe);
+    //console.log(busca);
     setTimeout(() => {
       fazBusca();      
     }, 5000);    
-    //setBusca(parseInt(busca)+2);
-    //busca => setBusca(busca);
+
   }
 
   const refreshScreen = () =>
@@ -36,7 +41,7 @@ export default function App() {
 
   const fetchData = async () => {
     try{
-          const resp = await fetch("https://api.sampleapis.com/coffee/"+busca);
+          const resp = await fetch("https://api.sampleapis.com/coffee/"+valorCafe);
           const data = await resp.json();
           setdadosJson(data);
           setApresentaTxt("Sua busca é: "+busca);
@@ -64,14 +69,16 @@ export default function App() {
     // Inicio - Busca ou resultado da busca
     if( carregando == false ){
       //Nao tem retorno da API
+      //<TextInput style={styles.inputText} placeholder="Informe a busca" onChangeText={busca => setBusca(busca)} />
       if( apresentaTxt == '' ){
         return (
           <View style={styles.container}>
             {/* inicio campo busca */}
             <Text style={styles.labelText}>Busca:</Text>
-            <TextInput style={styles.inputText} placeholder="Informe a busca" onChangeText={busca => setBusca(busca)} />{"\n"}
+            {"\n"}{"\n"}{"\n"}
+            <SelectPicker valorCafe={valorCafe} setvalorCafe={setvalorCafe}/>
+            {"\n"}{"\n"}{"\n"}
             <Button title="Enviar os dados" style={styles.buttonstyle} onPress={() => {validateAll();}} color="#6200EE" />
-            
             <StatusBar style="auto" />
           </View>
         );
